@@ -18,9 +18,9 @@
 # Main menu navigation
 menu:
   Home: /
-  Archives: /archives
-  Tags: /tags
-  Categories: /categories
+  Archives: /myblog/archives
+  #Tags: /tags
+  #Categories: /categories
   #XXX: /xxx
 
 # Favicon
