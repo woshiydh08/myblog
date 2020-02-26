@@ -17,8 +17,8 @@
 
 # Main menu navigation
 menu:
-  Home: /
-  Archives: /myblog/archives
+  首页: /
+  文章: /myblog/archives
   #Tags: /tags
   #Categories: /categories
   #XXX: /xxx
