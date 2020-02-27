@@ -1,0 +1,113 @@
+<!DOCTYPE html><html lang="cn"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="jwt"><meta name="keywords" content=""><meta name="author" content="totoro"><meta name="copyright" content="totoro"><title>jwt | Yoo_dh</title><link rel="shortcut icon" href="/myblog/melody-favicon.ico"><link rel="stylesheet" href="/myblog/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/myblog/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script><meta name="generator" content="Hexo 4.2.0"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#以前的身份验证方法"><span class="toc-number">1.</span> <span class="toc-text">以前的身份验证方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#传统的session认证"><span class="toc-number">1.1.</span> <span class="toc-text">传统的session认证</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基于session认证所显露的问题"><span class="toc-number">1.1.1.</span> <span class="toc-text">基于session认证所显露的问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点"><span class="toc-number">1.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JWT"><span class="toc-number">2.</span> <span class="toc-text">JWT</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-number">2.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#过程"><span class="toc-number">2.2.</span> <span class="toc-text">过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JWT长什么样？"><span class="toc-number">3.</span> <span class="toc-text">JWT长什么样？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JWT的构成"><span class="toc-number">4.</span> <span class="toc-text">JWT的构成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#header"><span class="toc-number">4.1.</span> <span class="toc-text">header</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#playload"><span class="toc-number">4.2.</span> <span class="toc-text">playload</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#signature"><span class="toc-number">4.3.</span> <span class="toc-text">signature</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何应用"><span class="toc-number">4.4.</span> <span class="toc-text">如何应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点-1"><span class="toc-number">5.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安全相关"><span class="toc-number">5.2.</span> <span class="toc-text">安全相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JWT问题和趋势"><span class="toc-number">5.3.</span> <span class="toc-text">JWT问题和趋势</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/myblog/img/avatar.jpg"></div><div class="author-info__name text-center">totoro</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/myblog/archives"><span class="pull-left">文章</span><span class="pull-right">5</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/myblog/">Yoo_dh</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/myblog">首页</a><a class="site-page" href="/myblog/archives">文章</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">jwt</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-02-27</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h2 id="以前的身份验证方法"><a href="#以前的身份验证方法" class="headerlink" title="以前的身份验证方法"></a>以前的身份验证方法</h2><p>Internet服务无法与用户身份验证分开。一般过程如下。</p>
+<p>1.用户向服务器发送用户名和密码。</p>
+<p>2.验证服务器后，相关数据（如用户角色，登录时间等）将保存在当前会话中。</p>
+<p>3.服务器向用户返回session_id，session信息都会写入到用户的Cookie。</p>
+<p>4.用户的每个后续请求都将通过在Cookie中取出session_id传给服务器。</p>
+<p>5.服务器收到session_id并对比之前保存的数据，确认用户的身份。</p>
+<h3 id="传统的session认证"><a href="#传统的session认证" class="headerlink" title="传统的session认证"></a>传统的session认证</h3><p>我们知道，http协议本身是一种无状态的协议，而这就意味着如果用户向我们的应用提供了用户名和密码来进行用户认证，那么下一次请求时，用户还要再一次进行用户认证才行，因为根据http协议，我们并不能知道是哪个用户发出的请求，所以为了让我们的应用能识别是哪个用户发出的请求，我们只能在服务器存储一份用户登录的信息，这份登录信息会在响应时传递给浏览器，告诉其保存为cookie,以便下次请求时发送给我们的应用，这样我们的应用就能识别请求来自哪个用户了,这就是传统的基于session认证。</p>
+<p>但是这种基于session的认证使应用本身很难得到扩展，随着不同客户端用户的增加，独立的服务器已无法承载更多的用户，而这时候基于session认证应用的问题就会暴露出来.</p>
+<h4 id="基于session认证所显露的问题"><a href="#基于session认证所显露的问题" class="headerlink" title="基于session认证所显露的问题"></a>基于session认证所显露的问题</h4><p><strong>Session</strong>: 每个用户经过我们的应用认证之后，我们的应用都要在服务端做一次记录，以方便用户下次请求的鉴别，通常而言session都是保存在内存中，而随着认证用户的增多，服务端的开销会明显增大。</p>
+<p><strong>扩展性</strong>: 用户认证之后，服务端做认证记录，如果认证的记录被保存在内存中的话，这意味着用户下次请求还必须要请求在这台服务器上,这样才能拿到授权的资源，这样在分布式的应用上，相应的限制了负载均衡器的能力。这也意味着限制了应用的扩展能力。</p>
+<p><strong>CSRF</strong>: 因为是基于cookie来进行用户识别的, cookie如果被截获，用户就会很容易受到跨站请求伪造的攻击。</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>这种模式最大的问题是，没有分布式架构，无法支持横向扩展。如果使用一个服务器，该模式完全没有问题。但是，如果它是服务器群集或面向服务的跨域体系结构的话，则需要一个统一的session数据库库来保存会话数据实现共享，这样负载均衡下的每个服务器才可以正确的验证用户身份。</p>
+<h2 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h2><p><strong>JWT的原则</strong></p>
+<p>JWT的原则是在服务器身份验证之后，将生成一个JSON对象并将其发送回用户，如下所示。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="attr">"UserName"</span>: <span class="string">"Chongchong"</span>,</span><br><span class="line"></span><br><span class="line">    <span class="attr">"Role"</span>: <span class="string">"Admin"</span>,</span><br><span class="line"></span><br><span class="line">    <span class="attr">"Expire"</span>: <span class="string">"2018-08-08 20:15:56"</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>之后，当用户与服务器通信时，客户在请求中发回JSON对象。服务器仅依赖于这个JSON对象来标识用户。为了防止用户篡改数据，服务器将在生成对象时添加签名。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>服务器不保存任何会话数据，即服务器变为无状态，使其更容易扩展。</p>
+<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><p>用户提交账号密码，服务器端进行验证。验证通过以后，服务器端会用自己的密钥把用户信息加密成Token返回给前端。前端拿到Token之后保存(一般放在Local Storage里)，每次向服务器端发送请求都会在Request的Header里面带上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Authorization: bearer token...</span><br></pre></td></tr></table></figure>
+
+<p>服务器端用自己的密钥解析token，如果能解析就是自己认证的用户。</p>
+<h2 id="JWT长什么样？"><a href="#JWT长什么样？" class="headerlink" title="JWT长什么样？"></a>JWT长什么样？</h2><p>JWT是由三段信息构成的，将这三段信息文本用<code>.</code>链接一起就构成了Jwt字符串。就像这样:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span><span class="selector-class">.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9</span><span class="selector-class">.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="JWT的构成"><a href="#JWT的构成" class="headerlink" title="JWT的构成"></a>JWT的构成</h2><p>第一部分我们称它为头部（header),第二部分我们称其为载荷（payload, 类似于飞机上承载的物品)，第三部分是签证（signature).</p>
+<h3 id="header"><a href="#header" class="headerlink" title="header"></a>header</h3><p>jwt的头部承载两部分信息：</p>
+<ul>
+<li>声明类型，这里是jwt</li>
+<li>声明加密的算法 通常直接使用 HMAC SHA256</li>
+</ul>
+<p>完整的头部就像下面这样的JSON：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">'typ'</span>: <span class="string">'JWT'</span>,</span><br><span class="line">  <span class="string">'alg'</span>: <span class="string">'HS256'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后将头部进行base64加密（该加密是可以对称解密的),构成了第一部分.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9</span><br></pre></td></tr></table></figure>
+
+<h3 id="playload"><a href="#playload" class="headerlink" title="playload"></a>playload</h3><p>载荷就是存放有效信息的地方。这个名字像是特指飞机上承载的货品，这些有效信息包含三个部分</p>
+<ul>
+<li>标准中注册的声明</li>
+<li>公共的声明</li>
+<li>私有的声明</li>
+</ul>
+<p><strong>标准中注册的声明</strong> (建议但不强制使用) ：</p>
+<ul>
+<li><strong>iss</strong>: jwt签发者</li>
+<li><strong>sub</strong>: jwt所面向的用户</li>
+<li><strong>aud</strong>: 接收jwt的一方</li>
+<li><strong>exp</strong>: jwt的过期时间，这个过期时间必须要大于签发时间</li>
+<li><strong>nbf</strong>: 定义在什么时间之前，该jwt都是不可用的.</li>
+<li><strong>iat</strong>: jwt的签发时间</li>
+<li><strong>jti</strong>: jwt的唯一身份标识，主要用来作为一次性token,从而回避重放攻击。</li>
+</ul>
+<p><strong>公共的声明</strong> ：<br> 公共的声明可以添加任何的信息，一般添加用户的相关信息或其他业务需要的必要信息.但不建议添加敏感信息，因为该部分在客户端可解密.</p>
+<p><strong>私有的声明</strong> ：<br> 私有声明是提供者和消费者所共同定义的声明，一般不建议存放敏感信息，因为base64是对称解密的，意味着该部分信息可以归类为明文信息。</p>
+<p>定义一个payload:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"sub"</span>: <span class="string">"1234567890"</span>,</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"John Doe"</span>,</span><br><span class="line">  <span class="attr">"admin"</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后将其进行base64加密，得到Jwt的第二部分。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9</span><br></pre></td></tr></table></figure>
+
+<h3 id="signature"><a href="#signature" class="headerlink" title="signature"></a>signature</h3><p>jwt的第三部分是一个签证信息，这个签证信息由三部分组成：</p>
+<ul>
+<li>header (base64后的)</li>
+<li>payload (base64后的)</li>
+<li>secret</li>
+</ul>
+<p>这个部分需要base64加密后的header和base64加密后的payload使用<code>.</code>连接组成的字符串，然后通过header中声明的加密方式进行加盐<code>secret</code>组合加密，然后就构成了jwt的第三部分。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// javascript</span></span><br><span class="line"><span class="keyword">var</span> encodedString = base64UrlEncode(header) + <span class="string">'.'</span> + base64UrlEncode(payload);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> signature = HMACSHA256(encodedString, <span class="string">'secret'</span>); <span class="comment">// TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</span></span><br></pre></td></tr></table></figure>
+
+<p>将这三部分用<code>.</code>连接成一个完整的字符串,构成了最终的jwt:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span><span class="selector-class">.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9</span><span class="selector-class">.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：secret是保存在服务器端的，jwt的签发生成也是在服务器端的，secret就是用来进行jwt的签发和jwt的验证，所以，它就是你服务端的私钥，在任何场景都不应该流露出去。一旦客户端得知这个secret, 那就意味着客户端是可以自我签发jwt了。</strong></p>
+<h3 id="如何应用"><a href="#如何应用" class="headerlink" title="如何应用"></a>如何应用</h3><p>一般是在请求头里加入<code>Authorization</code>，并加上<code>Bearer</code>标注：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">'api/user/1'</span>, &#123;</span><br><span class="line">  headers: &#123;</span><br><span class="line">    <span class="string">'Authorization'</span>: <span class="string">'Bearer '</span> + token</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>服务端会验证token，如果验证通过就会返回相应的资源。整个流程就是这样的:</p>
+<p><img src="/myblog/.com//p1.png" alt="img"></p>
+<p>jwt-diagram</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>因为json的通用性，所以JWT是可以进行跨语言支持的，像JAVA,JavaScript,NodeJS,PHP等很多语言都可以使用。</li>
+<li>因为有了payload部分，所以JWT可以在自身存储一些其他业务逻辑所必要的非敏感信息。</li>
+<li>便于传输，jwt的构成非常简单，字节占用很小，所以它是非常便于传输的。</li>
+<li>它不需要在服务端保存会话信息, 所以它易于应用的扩展</li>
+</ul>
+<h3 id="安全相关"><a href="#安全相关" class="headerlink" title="安全相关"></a>安全相关</h3><ul>
+<li>不应该在jwt的payload部分存放敏感信息，因为该部分是客户端可解密的部分。</li>
+<li>保护好secret私钥，该私钥非常重要。</li>
+<li>如果可以，请使用https协议</li>
+</ul>
+<h3 id="JWT问题和趋势"><a href="#JWT问题和趋势" class="headerlink" title="JWT问题和趋势"></a>JWT问题和趋势</h3><p>1、JWT默认不加密，但可以加密。生成原始令牌后，可以使用改令牌再次对其进行加密。</p>
+<p>2、当JWT未加密方法是，一些私密数据无法通过JWT传输。</p>
+<p>3、JWT不仅可用于认证，还可用于信息交换。善用JWT有助于减少服务器请求数据库的次数。</p>
+<p>4、JWT的最大缺点是服务器不保存会话状态，所以在使用期间不可能取消令牌或更改令牌的权限。也就是说，一旦JWT签发，在有效期内将会一直有效。</p>
+<p>5、JWT本身包含认证信息，因此一旦信息泄露，任何人都可以获得令牌的所有权限。为了减少盗用，JWT的有效期不宜设置太长。对于某些重要操作，用户在使用时应该每次都进行进行身份验证。</p>
+<p>6、为了减少盗用和窃取，JWT不建议使用HTTP协议来传输代码，而是使用加密的HTTPS协议进行传输。</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">totoro</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://yoursite.com/2020/02/27/jwt/">http://yoursite.com/2020/02/27/jwt/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请附上原文出处链接及本声明！</span></div></div><div class="post-meta__tag-list"></div><nav id="pagination"><div class="next-post pull-right"><a href="/myblog/2020/02/26/vue3-0/"><span>vue3.0监听之proxy</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2019 - 2020 By totoro</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/myblog/js/utils.js?version=1.7.0"></script><script src="/myblog/js/fancybox.js?version=1.7.0"></script><script src="/myblog/js/sidebar.js?version=1.7.0"></script><script src="/myblog/js/copy.js?version=1.7.0"></script><script src="/myblog/js/fireworks.js?version=1.7.0"></script><script src="/myblog/js/transition.js?version=1.7.0"></script><script src="/myblog/js/scroll.js?version=1.7.0"></script><script src="/myblog/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><script src="/myblog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/myblog/live2dw/assets/tororo.model.json"},"display":{"position":"left","width":200,"height":400},"mobile":{"show":false},"react":{"opacity":1},"log":false});</script></body></html>
