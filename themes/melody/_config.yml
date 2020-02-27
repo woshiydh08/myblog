@@ -17,7 +17,7 @@
 
 # Main menu navigation
 menu:
-  首页: /
+  首页: /myblog
   文章: /myblog/archives
   #Tags: /tags
   #Categories: /categories
